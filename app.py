@@ -14,7 +14,8 @@ import cv2 as cv
 app = Flask(__name__)
 api= Api(app)
 cors = CORS(app)
-model = load_model('model.h5')
+#model.h5 for ANN and cnn_model for CNN
+model = load_model('cnn_model.h5')
 graph = tf.get_default_graph()
 
 UPLOAD_FOLDER = "/home/uttam/PycharmProjects/ML"
@@ -39,8 +40,11 @@ class Predict(Resource):
         # X_test = image_array
         X_test = image_array.astype('float32')
         X_test /= 255
-        datas.append(X_test.flatten())
-        X_test = np.array(datas)
+        datas.append(X_test)
+        # for ANN
+        # X_test = np.array(datas)
+        # for CNN
+        X_test = np.array(datas).reshape(-1,36,36,1)
         with graph.as_default():
             prediction = model.predict_classes(X_test)
             prediction_prob = model.predict_proba(X_test)

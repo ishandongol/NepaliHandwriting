@@ -26,18 +26,36 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
+}
+.writing-container{
+    padding-bottom: 20px;
+}
+.margin-top{
+    margin-top: 20px;
+}
+.drawing-canvas{
+   border: #000000 dashed 1px;
+   margin: 20px;
+}
+.gradient{
     background-image: -moz-linear-gradient(270deg, #2B32B2, #1488CC 100%);
     background-image: -webkit-linear-gradient(270deg, #2B32B2, #1488CC 100%);
     background-image: -ms-linear-gradient(270deg, #2B32B2, #1488CC 100%);
 }
-
 .horizontal-line {
     background-color: rgb(206, 206, 206);
 }
+.home-container{
+    padding: 20px;
+}
+.buttom-margin{
+    margin-bottom: 20px;
+}
 
 .custom-form {
-    background-color: white;
     padding: 0;
+    background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -73,6 +91,3 @@
     z-index: -1;
 }
 
-.custom {
-    min-width: 500px;
-}

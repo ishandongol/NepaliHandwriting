@@ -31,12 +31,15 @@
 .writing-container{
     padding-bottom: 20px;
 }
-.margin-top{
-    margin-top: 20px;
+.custom-p{
+    padding: 0;
+    margin: 0;
 }
 .drawing-canvas{
-   border: #000000 dashed 1px;
-   margin: 20px;
+    background-color: rgb(46, 46, 46);
+   border-right: #ffffff dashed 1px;
+   border-left: #ffffff dashed 1px;
+
 }
 .gradient{
     background-image: -moz-linear-gradient(270deg, #2B32B2, #1488CC 100%);
@@ -55,8 +58,12 @@
 
 .custom-form {
     padding: 0;
-    background-color: white;
+    overflow: auto;
+    background-color: rgb(46, 46, 46);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -66,16 +73,18 @@
 }
 
 .btn-custom {
-    color: white;
-    background-image: -moz-linear-gradient(360deg, #2B32B2, #1488CC 50%);
-    background-image: -webkit-linear-gradient(360deg, #2B32B2, #1488CC 50%);
-    background-image: -ms-linear-gradient(360deg, #2B32B2, #1488CC 50%);
     min-width: 100%;
     min-height: 60px;
     border-radius: 0%;
 }
+.btn-custom-color{
+    color: white;
+    background-image: -moz-linear-gradient(360deg, #2B32B2, #1488CC 50%);
+    background-image: -webkit-linear-gradient(360deg, #2B32B2, #1488CC 50%);
+    background-image: -ms-linear-gradient(360deg, #2B32B2, #1488CC 50%);
+}
 
-.btn-custom:hover {
+.btn-custom-color:hover {
     color: white;
     background-image: -moz-linear-gradient(120deg, #2B32B2, #1488CC 50%);
     background-image: -webkit-linear-gradient(120deg, #2B32B2, #1488CC 50%);
@@ -91,3 +100,12 @@
     z-index: -1;
 }
 
+.prediction-container{
+    min-height:60px;
+    line-height: 60px;
+    font-size: 20px;
+    text-align: center;
+    padding-right: 20px;
+    padding-left: 20px;
+    background-color: white;
+}

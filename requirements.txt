@@ -1,0 +1,11 @@
+# requirements.txt
+gunicorn
+Flask
+Flask-Compress
+scikit-learn
+keras
+theano==0.7.0
+numpy
+tensorflow
+lasagne
+h5py

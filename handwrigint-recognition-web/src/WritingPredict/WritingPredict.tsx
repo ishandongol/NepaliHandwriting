@@ -5,7 +5,6 @@ import axios from "axios";
 // import {Canvas,Circle, Path, Text} from 'react-fabricjs';
 
 
-// // import { Navbar } from "./components";
 import { BASE_URL } from "../constants";
 
 
@@ -30,8 +29,6 @@ class App extends React.Component<any, any> {
       showPrediction: false,
     };
   }
-
-
 
 
   handleSubmit = (e: any) => {
@@ -83,37 +80,38 @@ class App extends React.Component<any, any> {
   render() {
     return (
       <div className="container-fluid custom-container gradient">
-        <div className="container">
-          <div className=" col-md-6 offset-md-3">
 
-   <div className="prediction-container">
-              {this.state.showPrediction ? (
-                <p className={"custom-p"}>
-                  I am{" "}
-                  <strong>{Math.round(this.state.probability * 100)}%</strong>{" "}
-                  sure that, it's <strong> {this.state.prediction}</strong>
-                </p>
-              ) :  <p className={"custom-p"}>
-              Nepali Handwriting Recognition
+       <SketchField
+          name={"canvas"}
+          className={"drawing-canvas"}
+          tool={Tools.Pencil}
+          height='100%'
+          lineColor='white'
+          ref={(ref: any) => this.sketch = ref}
+          lineWidth={10} />
+     
+
+        <div className="container-fluid controls">
+          <div className="prediction-container">
+            {this.state.showPrediction ? (
+              <p className={"custom-p"}>
+                I am{" "}
+                <strong>{Math.round(this.state.probability * 100)}%</strong>{" "}
+                sure that, it's <strong> {this.state.prediction}</strong>
+              </p>
+            ) : <p className={"custom-p"}>
+                Nepali Handwriting Recognition
             </p>}
-            </div>
-            <div className="custom-form">
-              <SketchField width='400px'
-                name={"canvas"}
-                className={"drawing-canvas"}
-                height='400px'
-                tool={Tools.Pencil}
-
-                lineColor='white'
-                ref={(ref: any) => this.sketch = ref}
-                lineWidth={15} /></div>
-         
-            <button className={"btn btn-custom btn-success"} onClick={this.handleSubmit}>Predict!</button>
-
-            <button className={"btn btn-custom btn-light"} onClick={this.handleOnClickClear}>Clear all</button>
           </div>
-        </div>
+          <div className="buttons-container">
+         <div className="buttons">
+         <button className={"btn btn-custom  btn-success"} onClick={this.handleSubmit}>Predict!</button>
+          <button className={"btn btn-custom btn-danger"} onClick={this.handleOnClickClear}>Clear all</button>
+         </div>
+          </div>
+          </div>
       </div>
+
     );
   }
 

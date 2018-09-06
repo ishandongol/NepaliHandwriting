@@ -1,12 +1,13 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => (
   <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-white">
     <div className="container">
-      <a className="navbar-brand" href="#">
-        Kali
-      </a>
-      <button
+      <Link className="navbar-brand" to="/">
+        Nepali Handwriting Recognition
+      </Link>
+      {/* <button
         className="navbar-toggler"
         type="button"
         data-toggle="collapse"
@@ -26,7 +27,7 @@ export const Navbar = () => (
             </a>
           </li>
         </ul>
-      </div>
+      </div> */}
     </div>
   </nav>
 );

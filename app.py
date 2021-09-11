@@ -7,18 +7,18 @@ from keras.models import load_model
 import os
 import pandas as pd
 import cv2 as cv
-import draw
-import tkinter as tk
+# import draw
+# import tkinter as tk
 import time
 
 app = Flask(__name__)
 api= Api(app)
 cors = CORS(app)
 #model.h5 for ANN and cnn_model.h5 for CNN
-model = load_model('cnn.h5')
+model = load_model('cnn_model.h5')
 graph = tf.get_default_graph()
 
-UPLOAD_FOLDER = "/home/uttam/PycharmProjects/ML/"
+UPLOAD_FOLDER = "./"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 class Upload(Resource):
 

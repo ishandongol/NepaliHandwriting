@@ -7,15 +7,13 @@ from keras.models import load_model
 import os
 import pandas as pd
 import cv2 as cv
-# import draw
-# import tkinter as tk
 import time
 
 app = Flask(__name__)
 api= Api(app)
 cors = CORS(app)
 #model.h5 for ANN and cnn_model.h5 for CNN
-model = load_model('cnn_model.h5')
+model = load_model('model_cnn.h5')
 graph = tf.get_default_graph()
 
 UPLOAD_FOLDER = "./"
@@ -27,17 +25,6 @@ class Upload(Resource):
         file.save(os.path.join(app.config['UPLOAD_FOLDER'])+"predict.jpg")
         return {"status": "ok"}
 
-
-class uploadGen(Resource):
-    def get(self):
-        root = tk.Tk()
-        root.wm_geometry("%dx%d+%d+%d" % (400, 500, 10, 10))
-        root.config(bg='black')
-        draw.ImageGenerator(root,10,10)
-        for i in range(1):
-            root.mainloop()
-        return {"status":"ok"}
-
 class Predict(Resource):
 
     def get(self):
@@ -45,6 +32,7 @@ class Predict(Resource):
         label_data = pd.read_csv('labels.csv',delimiter=',')
         test_image = cv.imread(os.path.join(app.config['UPLOAD_FOLDER'])+"predict.jpg", 0)
         image_array = cv.resize(test_image, (36, 36))
+        cv.imwrite("converted.png",image_array)
         (thresh, image_array) = cv.threshold(image_array, 128, 255, cv.THRESH_BINARY | cv.THRESH_OTSU)
         # X_test = image_array
         image = image_array.astype('float32')
@@ -68,7 +56,6 @@ class Predict(Resource):
         if label == '10': label = '0'
         return {"prediction": str(label_data.iloc[label, :].values[0]), "probability": float(probability)}
 api.add_resource(Upload, '/upload')
-api.add_resource(uploadGen, '/draw')
 api.add_resource(Predict, '/predict')
 
 if __name__ == '__main__':

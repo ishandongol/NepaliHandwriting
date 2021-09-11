@@ -31,13 +31,11 @@ class Predict(Resource):
         datas = []
         label_data = pd.read_csv('labels.csv',delimiter=',')
         test_image = cv.imread(os.path.join(app.config['UPLOAD_FOLDER'])+"predict.jpg", 0)
-        image_array = cv.resize(test_image, (36, 36))
-        cv.imwrite("converted.png",image_array)
+        image_array = cv.resize(cv.bitwise_not(test_image), (36, 36))
         (thresh, image_array) = cv.threshold(image_array, 128, 255, cv.THRESH_BINARY | cv.THRESH_OTSU)
-        # X_test = image_array
+        cv.imwrite("converted.png",image_array)
         image = image_array.astype('float32')
         X_test = image / 255
-        # X_test = (255 - X_test) /255
 
         #for ANN
         # datas.append(X_test.flatten())

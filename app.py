@@ -8,7 +8,11 @@ import os
 import pandas as pd
 import cv2 as cv
 import time
+import os
 
+PORT = os.environ.get("PORT")
+if not PORT:
+    PORT = 5000
 app = Flask(__name__)
 api= Api(app)
 cors = CORS(app)
@@ -57,4 +61,4 @@ api.add_resource(Upload, '/upload')
 api.add_resource(Predict, '/predict')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,host='0.0.0.0',port=PORT)
